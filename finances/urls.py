@@ -1,13 +1,20 @@
-# backend/budget_tracker/urls.py
+# finances/urls.py
+
 from django.urls import path
-from finances.views import TransactionList, TransactionDetail, BudgetDetail, CategoryList, home, LoginView
-from .views import FinancialSummaryView
+from .views import (
+    TransactionList,
+    TransactionDetail,
+    BudgetDetail,
+    CategoryList,
+   FinancialSummaryView,
+)
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 urlpatterns = [
-    path('', home),
-    path('api/transactions/', TransactionList.as_view(), name='transaction-list'),
-    path('api/transactions/<int:pk>/', TransactionDetail.as_view(), name='transaction-detail'),
-    path('api/budget/', BudgetDetail.as_view(), name='budget-detail'),
-    path('api/categories/', CategoryList.as_view(), name='category-list'),
-    path('api/login/', LoginView.as_view(), name='login'),
-    path('api/financial-summary/', FinancialSummaryView.as_view(), name='financial-summary'),
+    path('transactions/', TransactionList.as_view(), name='transaction-list'),
+    path('transactions/<int:pk>/', TransactionDetail.as_view(), name='transaction-detail'),
+    path('budgets/', BudgetDetail.as_view(), name='budget-detail'),
+    path('categories/', CategoryList.as_view(), name='category-list'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('financial-summary/', FinancialSummaryView.as_view(), name='financial-summary'),
 ]
