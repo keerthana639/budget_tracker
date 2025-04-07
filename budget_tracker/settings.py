@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'finances',
+    
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
