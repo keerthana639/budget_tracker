@@ -10,6 +10,17 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import User
 import logging
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class FinancialSummaryView(APIView):
+    def get(self, request):
+        # your summary logic here
+        return Response({
+            "income": 1000,
+            "expenses": 600,
+            "balance": 400
+        })
 
 class LoginView(APIView):
     def post(self, request):
